@@ -13,7 +13,7 @@ public class VirtualPetApp {
 		boolean stillPlaying = true;
 
 		do {
-			boolean angryCat = kittyCat.tick(4);
+			boolean angryCat = kittyCat.tick(3);
 
 			// if two or more reach 50 kitty will take care of their own needs
 			// by rampaging through the house and eating everything
@@ -22,12 +22,11 @@ public class VirtualPetApp {
 						+ "\ndestroying most of the furniture and eating all of your food.");
 				do {
 					System.out.println("Tell your kitty \"sorry\"");
-				} while (!in.next().equals("sorry"));
+				} while (!in.next().toLowerCase().equals("sorry"));
 
 				kittyCat.hunger = 15;
 				kittyCat.thirst = 15;
 				kittyCat.boredom = 15;
-				kittyCat.tiredness = 15;
 			}
 
 			System.out.println("~" + kittyCat.name + "~");

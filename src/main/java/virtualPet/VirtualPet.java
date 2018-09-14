@@ -31,8 +31,8 @@ public class VirtualPet {
 			boredom = stayInLimits(boredom);
 			tiredness = stayInLimits(tiredness);
 		}
-		
-		//checks if unhappy
+
+		// checks if unhappy by looking at which numbers are high
 		int high = 0;
 		if (hunger > 40) {
 			high++;
@@ -49,9 +49,11 @@ public class VirtualPet {
 
 		if (high >= 2) {
 			mood = "unhappy";
+		} else {
+			mood = "happy";
 		}
-		
-		//checks if cat is going to rampage
+
+		// checks if cat is going to rampage
 		int maxed = 0;
 		if (hunger == 50) {
 			maxed++;
@@ -68,9 +70,6 @@ public class VirtualPet {
 
 		if (maxed >= 2) {
 			return true;
-		}
-		if (maxed == 1) {
-			mood = "unhappy";
 		}
 		return false;
 	}
