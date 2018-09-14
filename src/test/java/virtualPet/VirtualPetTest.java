@@ -30,16 +30,16 @@ public class VirtualPetTest {
 	public void shouldFeed() {
 		VirtualPet underTest = new VirtualPet("Kitty the Cat");
 		underTest.tick(20);
-		underTest.feed();
-		Assert.assertEquals(10, underTest.hunger);
+		underTest.feed(1);
+		Assert.assertEquals(5, underTest.hunger);
 	}
 	
 	@Test
 	public void shouldStillFeed() {
 		VirtualPet underTest = new VirtualPet("Kitty the Cat");
 		underTest.tick(30);
-		underTest.feed();
-		Assert.assertEquals(20, underTest.hunger);
+		underTest.feed(1);
+		Assert.assertEquals(15, underTest.hunger);
 	}
 	
 	@Test
@@ -61,7 +61,7 @@ public class VirtualPetTest {
 	@Test
 	public void shouldNotDropBelowZero() {
 		VirtualPet underTest = new VirtualPet("Kitty the Cat");
-		underTest.feed();
+		underTest.feed(2);
 		underTest.tick(1);
 		Assert.assertEquals(0, underTest.hunger);
 	}

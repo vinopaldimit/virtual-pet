@@ -1,15 +1,13 @@
 package virtualPet;
 
-import java.util.Scanner;
-
 public class VirtualPet {
 	int hunger = 0;
 	int thirst = 0;
 	int boredom = 0;
 	int tiredness = 0;
-	
+
 	String mood = "happy";
-	
+
 	String appearance = " ^  ^\n(=·.·=)S";
 	String name = "Kitty the Cat";
 
@@ -33,7 +31,27 @@ public class VirtualPet {
 			boredom = stayInLimits(boredom);
 			tiredness = stayInLimits(tiredness);
 		}
+		
+		//checks if unhappy
+		int high = 0;
+		if (hunger > 40) {
+			high++;
+		}
+		if (thirst > 40) {
+			high++;
+		}
+		if (boredom > 40) {
+			high++;
+		}
+		if (tiredness > 40) {
+			high++;
+		}
 
+		if (high >= 2) {
+			mood = "unhappy";
+		}
+		
+		//checks if cat is going to rampage
 		int maxed = 0;
 		if (hunger == 50) {
 			maxed++;
@@ -47,19 +65,24 @@ public class VirtualPet {
 		if (tiredness == 50) {
 			maxed++;
 		}
-		
+
 		if (maxed >= 2) {
 			return true;
 		}
-		if(maxed==1) {
+		if (maxed == 1) {
 			mood = "unhappy";
 		}
 		return false;
 	}
 
-	public void feed() {
-		hunger -= 15;
-		thirst += 5;
+	public void feed(int choice) {
+		if (choice == 1) {
+			hunger -= 15;
+			thirst += 5;
+		} else if (choice == 2) {
+			hunger -= 25;
+			thirst += 10;
+		}
 	}
 
 	public void play() {
